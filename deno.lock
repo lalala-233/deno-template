@@ -7,6 +7,7 @@
     "npm:@11ty/eleventy@^3.1.6": "3.1.6",
     "npm:@tailwindcss/cli@*": "4.3.1",
     "npm:@tailwindcss/cli@^4.3.1": "4.3.1",
+    "npm:daisyui@^5.5.23": "5.5.23",
     "npm:html-minifier-terser@*": "7.2.0",
     "npm:html-minifier-terser@^7.2.0": "7.2.0",
     "npm:tailwindcss@^4.3.1": "4.3.1"
@@ -476,6 +477,9 @@
     },
     "concat-map@0.0.1": {
       "integrity": "sha512-/Srv4dswyQNBfohGpz9o6Yb3Gz3SrUDqBH5rTuhGR7ahtlbYKnVxw2bCFMRljaA7EXHaXZ8wsHdodFvbkhKmqg=="
+    },
+    "daisyui@5.5.23": {
+      "integrity": "sha512-xuheNUSL4T6ZVtWXoioqcNkjoyGX85QTDz4HTw2aBPfqk4fuMjax5HDo8qCmpV6M1YN8bGvfx5BpYCoDeRlt+A=="
     },
     "debug@2.6.9": {
       "integrity": "sha512-bC7ElrdJaJnPbAP+1EotYvqZsb3ecl5wi6Bfi6BJTUcNowp6cvspg0jXznRTKDjm/E7AdgFBVeAPVMNcKGsHMA==",
@@ -1161,6 +1165,7 @@
       "jsr:@std/assert@^1.0.19",
       "npm:@11ty/eleventy@^3.1.6",
       "npm:@tailwindcss/cli@^4.3.1",
+      "npm:daisyui@^5.5.23",
       "npm:html-minifier-terser@^7.2.0",
       "npm:tailwindcss@^4.3.1"
     ]

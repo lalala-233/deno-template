@@ -1,5 +1,6 @@
 @import "tailwindcss";
-@source "./index.html";
+@plugin "daisyui";
+@source "./*.html";
+@source "./*.ts";
 @source "./_includes/**/*.liquid";
 @source "./_includes/**/*.ts";
-@source "./main.ts";

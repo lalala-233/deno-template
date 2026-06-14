@@ -11,10 +11,11 @@ export function renderTodoItem({ text, checked }: {
 
   input.checked = checked;
   span.textContent = text;
+
   if (checked) {
-    span.classList.add('text-gray-500','line-through');
+    span.classList.add('text-base-content/50', 'line-through');
   } else {
-    span.classList.add('text-gray-800');
+    span.classList.add('text-base-content');
   }
 
   return clone.outerHTML;

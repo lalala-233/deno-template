@@ -1,15 +1,17 @@
 {
   "tasks": {
-    "build:11ty": "deno run -A npm:@11ty/eleventy --input=src --output=dist",
-    "build:ts":   "deno bundle src/main.ts -o dist/main.js",
-    "build:css":  "deno run -A npm:@tailwindcss/cli -i src/input.css -o dist/output.css",
-    "build":      "deno task build:ts && deno task build:11ty && deno task build:css"
+    "build:11ty": "deno run -A npm:@11ty/eleventy",
+    "build:ts": "deno bundle src/main.ts -o dist/main.js --minify",
+    "build:css": "deno run -A npm:@tailwindcss/cli -i src/input.css -o dist/output.css --minify",
+    "postbuild:clean": "deno eval \"await Deno.remove('./dist/main.js'); await Deno.remove('./dist/output.css')\"",
+    "build": "deno task build:ts && deno task build:css && deno task build:11ty"
   },
   "imports": {
     "@11ty/eleventy": "npm:@11ty/eleventy@^3.1.6",
-    "@std/assert": "jsr:@std/assert@1",
-    "@tailwindcss/cli": "npm:@tailwindcss/cli@^4.3.0",
-    "tailwindcss": "npm:tailwindcss@^4.3.0"
+    "@std/assert": "jsr:@std/assert@^1.0.19",
+    "@tailwindcss/cli": "npm:@tailwindcss/cli@^4.3.1",
+    "html-minifier-terser": "npm:html-minifier-terser@^7.2.0",
+    "tailwindcss": "npm:tailwindcss@^4.3.1"
   },
   "nodeModulesDir": "auto"
 }

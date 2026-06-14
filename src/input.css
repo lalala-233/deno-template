@@ -1,5 +1,5 @@
 @import "tailwindcss";
 @source "./index.html";
-@source "./_includes/**/*.html";
 @source "./_includes/**/*.liquid";
+@source "./_includes/**/*.ts";
 @source "./main.ts";

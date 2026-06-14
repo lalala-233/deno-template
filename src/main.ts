@@ -1,4 +1,4 @@
-import { renderTodoItem } from "./_includes/components/todo-item.ts";
+import { renderTodoItem } from "./todo-item.ts";
 
 interface Todo {
   id: number;

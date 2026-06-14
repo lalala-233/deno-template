@@ -1,4 +1,4 @@
-import { createTodoItem, updateTodoItem, removeTodoItem } from "./todo-item.ts";
+import { createTodoItem, removeTodoItem, updateTodoItem } from "./todo-item.ts";
 import { applyI18n } from "./i18n.ts";
 
 export interface Todo {
@@ -76,7 +76,6 @@ function renderAll() {
   }
   todos.length === 0 ? showEmpty() : showList();
 }
-
 
 todoList.addEventListener("change", (e) => {
   const target = e.target as HTMLElement;

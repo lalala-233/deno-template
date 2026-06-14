@@ -1,10 +1,12 @@
 {
   "tasks": {
+    "check": "deno fmt --check && deno lint && deno check **/*.ts && deno check **/*.tsx",
     "build:11ty": "deno run --allow-env --allow-read --allow-write npm:@11ty/eleventy",
     "build:ts": "deno bundle src/main.ts -o dist/main.js --minify",
     "build:css": "deno run --allow-env --allow-read --allow-write --allow-ffi --deny-run npm:@tailwindcss/cli -i src/input.css -o dist/output.css --minify",
-    "postbuild:clean": "deno eval \"await Deno.remove('./dist/main.js'); await Deno.remove('./dist/output.css')\"",
-    "build": "deno task build:ts && deno task build:css && deno task build:11ty"
+    "build": "deno task build:ts && deno task build:css && deno task build:11ty",
+    "clean:no-11ty": "deno eval \"await Deno.remove('./dist/main.js'); await Deno.remove('./dist/output.css')\"",
+    "clean": "deno eval \"await Deno.remove('./dist/', { recursive: true })\""
   },
   "imports": {
     "@11ty/eleventy": "npm:@11ty/eleventy@^3.1.6",

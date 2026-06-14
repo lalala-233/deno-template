@@ -1,4 +1,5 @@
 import { createTodoItem, updateTodoItem, removeTodoItem } from "./todo-item.ts";
+import { applyI18n } from "./i18n.ts";
 
 export interface Todo {
   id: number;
@@ -101,3 +102,4 @@ todoInput.addEventListener("keypress", (e) => {
 });
 
 loadTodos();
+applyI18n();

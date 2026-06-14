@@ -1,4 +1,6 @@
 import { Todo } from './main.ts';
+import { applyI18nToElement } from './i18n.ts';
+
 const todoTemplate = document.getElementById('todo-item-template') as HTMLTemplateElement;
 
 export function createTodoItem({ id, text, completed }: Todo): HTMLElement {
@@ -11,9 +13,7 @@ export function createTodoItem({ id, text, completed }: Todo): HTMLElement {
   input.checked = completed;
   span.textContent = text;
 
-  span.classList.toggle('line-through', completed);
-  span.classList.toggle('text-base-content/50', completed);
-  span.classList.toggle('text-base-content', !completed);
+  applyI18nToElement(clone);
 
   return clone;
 }
@@ -27,10 +27,6 @@ export function updateTodoItem({ id, text, completed }: Todo): boolean {
 
   input.checked = completed;
   span.textContent = text;
-
-  span.classList.toggle('line-through', completed);
-  span.classList.toggle('text-base-content/50', completed);
-  span.classList.toggle('text-base-content', !completed);
 
   return true;
 }

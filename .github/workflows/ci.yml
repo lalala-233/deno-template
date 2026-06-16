@@ -26,7 +26,7 @@ jobs:
         uses: denoland/setup-deno@v2
 
       - name: Cache Deno dependencies
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: ~/.cache/deno
           key: ${{ runner.os }}-deno-${{ hashFiles('**/deno.lock', '**/deno.json') }}
@@ -60,4 +60,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5

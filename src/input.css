@@ -1,6 +1,5 @@
 @import "tailwindcss";
 @plugin "daisyui";
-@source "./*.html";
-@source "./*.ts";
-@source "./_includes/**/*.liquid";
-@source "./_includes/**/*.ts";
+@source "./*.tsx";
+@source "./scripts/**/*.tsx";
+@source "./templates/**/*.tsx";

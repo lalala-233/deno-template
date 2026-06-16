@@ -1,20 +1,26 @@
 {
   "tasks": {
-    "check": "deno fmt --check && deno lint && deno check **/*.ts && deno check **/*.tsx",
-    "build:11ty": "deno run --allow-env --allow-read --allow-write npm:@11ty/eleventy",
-    "build:ts": "deno bundle src/main.ts -o dist/main.js --minify",
+    "check": "deno fmt --check && deno lint && deno check **/*.tsx",
+    "build:ts": "deno bundle src/scripts/main.tsx -o dist/main.js --minify",
     "build:css": "deno run --allow-env --allow-read --allow-write --allow-ffi --deny-run npm:@tailwindcss/cli -i src/input.css -o dist/output.css --minify",
-    "build": "deno task build:ts && deno task build:css && deno task build:11ty",
-    "clean:no-11ty": "deno eval \"await Deno.remove('./dist/main.js'); await Deno.remove('./dist/output.css')\"",
+    "build:html": "deno run --allow-read --allow-write src/build.tsx",
+    "build": "deno task build:ts && deno task build:css && deno task build:html",
+    "clean:no-html": "deno eval \"await Deno.remove('./dist/main.js'); await Deno.remove('./dist/output.css')\"",
     "clean": "deno eval \"await Deno.remove('./dist/', { recursive: true })\""
   },
   "imports": {
-    "@11ty/eleventy": "npm:@11ty/eleventy@^3.1.6",
     "@std/assert": "jsr:@std/assert@^1.0.19",
     "@tailwindcss/cli": "npm:@tailwindcss/cli@^4.3.1",
     "daisyui": "npm:daisyui@^5.5.23",
     "html-minifier-terser": "npm:html-minifier-terser@^7.2.0",
+    "preact": "npm:preact@^10.29.2",
+    "preact-render-to-string": "npm:preact-render-to-string@^6.7.0",
     "tailwindcss": "npm:tailwindcss@^4.3.1"
   },
-  "nodeModulesDir": "auto"
+  "nodeModulesDir": "auto",
+  "compilerOptions": {
+    "lib": ["dom", "deno.ns"],
+    "jsx": "react-jsx",
+    "jsxImportSource": "preact"
+  }
 }

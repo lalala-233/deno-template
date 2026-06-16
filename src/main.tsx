@@ -1,5 +1,9 @@
-import { createTodoItem, removeTodoItem, updateTodoItem } from "./todo-item.ts";
-import { applyI18n } from "./i18n.ts";
+import {
+  createTodoItem,
+  removeTodoItem,
+  updateTodoItem,
+} from "./todo-item.tsx";
+import { applyI18n } from "./i18n.tsx";
 
 export interface Todo {
   id: number;
@@ -15,7 +19,6 @@ const emptyState = document.getElementById("emptyState") as HTMLDivElement;
 let todos: Todo[] = [];
 let nextId = 1;
 
-// 从 localStorage 加载，仅此一次全量渲染
 function loadTodos() {
   const stored = localStorage.getItem("deno_todos");
   if (stored) {

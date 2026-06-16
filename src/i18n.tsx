@@ -1,21 +1,23 @@
-type Lang = "zh" | "en";
+type Lang = "zh-CN" | "en";
 
 const langToggle = document.getElementById("langToggle") as HTMLButtonElement;
 
 const dict: Record<Lang, Record<string, string>> = {
-  zh: {
+  "zh-CN": {
     placeholder: "写点什么...",
     addBtn: "添加",
     empty: "✨ 暂无任务，添加一条吧",
     deleteBtn: "删除",
-    pageTitle: "首页",
+    title: "首页 - Deno TodoList",
+    langToggle: "EN",
   },
   en: {
     placeholder: "Write your todo here...",
     addBtn: "Add",
     empty: "✨ No tasks yet, add one!",
     deleteBtn: "Delete",
-    pageTitle: "Home",
+    title: "Home - Deno TodoList",
+    langToggle: "中",
   },
 };
 
@@ -42,19 +44,19 @@ function applyNode(el: Element) {
 
 export function applyI18n() {
   document.querySelectorAll("[data-i18n]").forEach(applyNode);
-  document.title = `${t("pageTitle")} - Deno TodoList`;
 }
 
 export function applyI18nToElement(el: Element) {
   el.querySelectorAll("[data-i18n]").forEach(applyNode);
 }
 
+// changing document.documentElement.lang will change default font, so we don't change it now.
 langToggle.addEventListener("click", () => {
-  if (langToggle.textContent!.trim() === "EN") {
-    setLang("en");
-    langToggle.textContent = "中";
+  if (lang === "en") {
+    // document.documentElement.lang = "zh-CN";
+    setLang("zh-CN");
   } else {
-    setLang("zh");
-    langToggle.textContent = "EN";
+    // document.documentElement.lang = "en";
+    setLang("en");
   }
 });

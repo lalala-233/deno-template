@@ -1,5 +1,5 @@
-import { Todo } from "./main.ts";
-import { applyI18nToElement } from "./i18n.ts";
+import { Todo } from "./main.tsx";
+import { applyI18nToElement } from "./i18n.tsx";
 
 const todoTemplate = document.getElementById(
   "todo-item-template",

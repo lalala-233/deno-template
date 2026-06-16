@@ -1,4 +1,5 @@
 {
+  "version": "0.1.0",
   "tasks": {
     "build": "deno task build:ts && deno task build:css && deno task build:html",
     "build:css": "deno run --allow-env --allow-read --allow-write --allow-ffi --deny-run npm:@tailwindcss/cli -i src/input.css -o dist/output.css --minify --silent",

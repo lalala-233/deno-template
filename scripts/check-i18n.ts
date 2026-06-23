@@ -13,6 +13,9 @@ async function collectKeys(dir: string): Promise<void> {
       for (const m of content.matchAll(/data-i18n="([^"]+)"/g)) {
         usedKeys.add(m[1]);
       }
+      for (const m of content.matchAll(/data-i18n='([^']+)'/g)) {
+        usedKeys.add(m[1]);
+      }
     }
   }
 }
@@ -21,7 +24,7 @@ await collectKeys(`${import.meta.dirname}/../src/templates`);
 
 // Also collect from generated dist/index.html for extra coverage
 try {
-  collectKeys(`${import.meta.dirname}/../dist`);
+  await collectKeys(`${import.meta.dirname}/../dist`);
 } catch {
   // skip if dist doesn't exist
 }

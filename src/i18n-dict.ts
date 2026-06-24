@@ -1,6 +1,23 @@
 export type Lang = "zh-CN" | "en";
 
-export const dict: Record<Lang, Record<string, string>> = {
+const en = {
+  placeholder: "Write your todo here...",
+  addBtn: "Add",
+  empty: "✨ No tasks yet, add one!",
+  deleteBtn: "Delete",
+  title: "Home - Deno TodoList",
+  langToggle: "中",
+} as const;
+
+export type I18nKey = keyof typeof en;
+
+export const validKeys = Object.keys(en);
+
+export function isValidKey(key: string): key is I18nKey {
+  return validKeys.includes(key);
+}
+
+export const dict: Record<Lang, Record<I18nKey, string>> = {
   "zh-CN": {
     placeholder: "写点什么...",
     addBtn: "添加",
@@ -9,12 +26,5 @@ export const dict: Record<Lang, Record<string, string>> = {
     title: "首页 - Deno TodoList",
     langToggle: "EN",
   },
-  en: {
-    placeholder: "Write your todo here...",
-    addBtn: "Add",
-    empty: "✨ No tasks yet, add one!",
-    deleteBtn: "Delete",
-    title: "Home - Deno TodoList",
-    langToggle: "中",
-  },
+  en: en,
 };

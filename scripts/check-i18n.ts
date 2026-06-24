@@ -1,4 +1,4 @@
-import { dict } from "../src/i18n-dict.ts";
+import { isValidKey, validKeys } from "../src/i18n-dict.ts";
 
 // Recursively collect all data-i18n keys from .tsx files
 const usedKeys = new Set<string>();
@@ -29,42 +29,10 @@ try {
   // skip if dist doesn't exist
 }
 
-const langEntries = Object.entries(dict);
-if (langEntries.length === 0) {
-  console.error("❌ No languages defined in dict");
-  Deno.exit(1);
-}
-
-// check if all keys are present in all languages
-const [firstLang, firstTranslations] = langEntries[0];
-const firstKeys = new Set(Object.keys(firstTranslations));
-let keysConsistent = true;
-
-for (const [lang, translations] of langEntries.slice(1)) {
-  const currentKeys = new Set(Object.keys(translations));
-  const areEqual = currentKeys.size === firstKeys.size &&
-    [...firstKeys].every((k) => currentKeys.has(k));
-  if (!areEqual) {
-    console.error(
-      `❌ Language "${lang}" has different keys than "${firstLang}"`,
-    );
-    const missing = [...firstKeys].filter((k) => !currentKeys.has(k));
-    const extra = [...currentKeys].filter((k) => !firstKeys.has(k));
-    if (missing.length) console.error(`   Missing keys: ${missing.join(", ")}`);
-    if (extra.length) console.error(`   Extra keys: ${extra.join(", ")}`);
-    keysConsistent = false;
-  }
-}
-if (!keysConsistent) {
-  Deno.exit(1);
-}
-
-const definedKeys = firstKeys;
-
 let exitCode = 0;
 
 for (const key of usedKeys) {
-  if (!definedKeys.has(key)) {
+  if (!isValidKey(key)) {
     console.error(
       `❌ Missing translation key: "${key}" (used in template but not defined in any language)`,
     );
@@ -72,7 +40,7 @@ for (const key of usedKeys) {
   }
 }
 
-for (const key of definedKeys) {
+for (const key of validKeys) {
   if (!usedKeys.has(key)) {
     console.warn(
       `⚠️  Unused key: "${key}" (defined in all languages but not referenced in any template)`,

@@ -1,13 +1,12 @@
-import { dict, Lang } from "./i18n-dict.ts";
+import { dict, I18nKey, isValidKey, Lang } from "./i18n-dict.ts";
 
 const langToggle = document.getElementById("langToggle") as HTMLButtonElement;
 
 let lang: Lang = "en";
 
-export function t(key: string): string {
+export function t(key: I18nKey): string {
   return dict[lang]?.[key] ?? dict.en[key] ?? key;
 }
-
 export function setLang(l: Lang) {
   lang = l;
   applyI18n();
@@ -15,7 +14,7 @@ export function setLang(l: Lang) {
 
 function applyNode(el: Element) {
   const key = el.getAttribute("data-i18n");
-  if (!key) return;
+  if (!key || !isValidKey(key)) return;
   if (el instanceof HTMLInputElement) {
     el.placeholder = t(key);
   } else {

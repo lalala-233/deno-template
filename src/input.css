@@ -3,5 +3,4 @@
   logs: false;
 }
 @source "./*.tsx";
-@source "./scripts/**/*.tsx";
 @source "./templates/**/*.tsx";

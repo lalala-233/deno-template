@@ -19,7 +19,7 @@ export function Base({ children, cssContent, jsContent }: BaseProps) {
           dangerouslySetInnerHTML={{ __html: jsContent }}
         />
       </head>
-      <body>
+      <body className="bg-base-200 min-h-screen">
         {children}
       </body>
     </html>

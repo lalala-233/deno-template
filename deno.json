@@ -5,9 +5,11 @@
     "build:css": "deno run --allow-env --allow-read --allow-write --allow-ffi --deny-run npm:@tailwindcss/cli -i src/input.css -o dist/output.css --minify --silent",
     "build:html": "deno run --allow-read --allow-write scripts/build.tsx",
     "build:ts": "deno bundle src/main.tsx -o dist/main.js --minify --quiet",
-    "check": "deno task check:tsx && deno task check:i18n",
+    "check": "deno task check:fmt && deno task check:lint && deno task check:types && deno task check:i18n",
+    "check:fmt": "deno fmt --check",
     "check:i18n": "deno run --allow-read scripts/check-i18n.ts",
-    "check:tsx": "deno fmt --check && deno lint && deno check",
+    "check:lint": "deno lint",
+    "check:types": "deno check",
     "clean": "deno eval \"await Deno.remove('./dist/', { recursive: true })\"",
     "clean:no-html": "deno eval \"await Deno.remove('./dist/main.js'); await Deno.remove('./dist/output.css')\""
   },

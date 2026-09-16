@@ -7,7 +7,7 @@
     "build:ts": "deno bundle src/main.tsx -o dist/main.js --minify --quiet",
     "check": "deno task check:tsx && deno task check:i18n",
     "check:i18n": "deno run --allow-read scripts/check-i18n.ts",
-    "check:tsx": "deno fmt --check && deno lint && deno check **/*.tsx",
+    "check:tsx": "deno fmt --check && deno lint && deno check",
     "clean": "deno eval \"await Deno.remove('./dist/', { recursive: true })\"",
     "clean:no-html": "deno eval \"await Deno.remove('./dist/main.js'); await Deno.remove('./dist/output.css')\""
   },

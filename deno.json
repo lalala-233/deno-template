@@ -11,7 +11,8 @@
     "check:lint": "deno lint",
     "check:types": "deno check",
     "clean": "deno eval \"await Deno.remove('./dist/', { recursive: true })\"",
-    "clean:no-html": "deno eval \"await Deno.remove('./dist/main.js'); await Deno.remove('./dist/output.css')\""
+    "clean:no-html": "deno eval \"await Deno.remove('./dist/main.js'); await Deno.remove('./dist/output.css')\"",
+    "dev": "deno run --watch=src,scripts --allow-read --allow-run --allow-net scripts/dev.ts"
   },
   "imports": {
     "@std/assert": "jsr:@std/assert@^1.0.19",

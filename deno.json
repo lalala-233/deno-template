@@ -15,7 +15,6 @@
     "dev": "deno run --watch=src,scripts --allow-read=dist --allow-run=deno --allow-net=127.0.0.1:3000 scripts/dev.ts"
   },
   "imports": {
-    "@std/assert": "jsr:@std/assert@^1.0.19",
     "@tailwindcss/cli": "npm:@tailwindcss/cli@^4.3.1",
     "daisyui": "npm:daisyui@^5.5.23",
     "html-minifier-terser": "npm:html-minifier-terser@^7.2.0",

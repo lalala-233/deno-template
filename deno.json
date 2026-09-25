@@ -10,8 +10,8 @@
     "check:i18n": "deno run --allow-read=src,dist scripts/check-i18n.ts",
     "check:lint": "deno lint",
     "check:types": "deno check",
-    "clean": "deno eval --allow-write=dist \"await Deno.remove('./dist/', { recursive: true })\"",
-    "clean:no-html": "deno eval --allow-write=dist \"await Deno.remove('./dist/main.js'); await Deno.remove('./dist/output.css')\"",
+    "clean": "deno run --allow-write=dist scripts/clean.ts",
+    "clean:no-html": "deno run --allow-write=dist scripts/clean.ts dist/main.js dist/output.css",
     "dev": "deno run --watch=src,scripts --allow-read=dist --allow-run=deno --allow-net=127.0.0.1:3000 scripts/dev.ts"
   },
   "imports": {

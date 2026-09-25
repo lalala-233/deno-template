@@ -15,12 +15,12 @@
     "dev": "deno run --watch=src,scripts --allow-read=dist --allow-run=deno --allow-net=127.0.0.1:3000 scripts/dev.ts"
   },
   "imports": {
-    "@tailwindcss/cli": "npm:@tailwindcss/cli@^4.3.1",
-    "daisyui": "npm:daisyui@^5.5.23",
+    "@tailwindcss/cli": "npm:@tailwindcss/cli@^4.3.3",
+    "daisyui": "npm:daisyui@^5.7.44",
     "html-minifier-terser": "npm:html-minifier-terser@^7.2.0",
-    "preact": "npm:preact@^10.29.2",
+    "preact": "npm:preact@^10.29.8",
     "preact-render-to-string": "npm:preact-render-to-string@^6.7.0",
-    "tailwindcss": "npm:tailwindcss@^4.3.1"
+    "tailwindcss": "npm:tailwindcss@^4.3.3"
   },
   "nodeModulesDir": "auto",
   "compilerOptions": {
